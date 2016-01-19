@@ -46,18 +46,26 @@ var pgCounty = [38.837847,-76.848410];
       });
 
        // Create our POI layer and add popups
-      var poi = new L.geoJson(annesPOI, {
-          // add options...eventually
-          onEachFeature: function (feature, layer) {
-              layer.bindPopup('<b>' + feature.properties.Name + ": " + '</b>' + feature.properties.Comments);
-          }
-      });
+      // var poi = new L.geoJson(annesPOI, {
+      //     // add options...eventually
+      //     onEachFeature: function (feature, layer) {
+      //         layer.bindPopup('<b>' + feature.properties.Name + ": " + '</b>' + feature.properties.Comments);
+      //     }
+      // });
 
       // Create our CWP Projects layer and add popups
       var cwp = new L.geoJson(cwpprojects, {
           // add options...eventually
+          style: function(feature){
+          	switch (feature.properties.Phase) {
+              case 'Design': return {color: feature.properties.marker-color};
+              case 'Completed': return {color: feature.properties.marker_color};
+              case 'Planning': return {color: feature.properties.marker_color};
+              case 'Construction': return {color: feature.properties.marker_color};
+            } 
+          },
           onEachFeature: function (feature, layer) {
-              layer.bindPopup('<b>' + feature.properties.Phase + ": " + '</b>' + feature.properties.Start_Date);
+              layer.bindPopup('<b>Phase:</b>' + feature.properties.Phase + '<br/><b>Start Date:</b>' + feature.properties.Start_Date);
           }
       });
 
@@ -78,8 +86,8 @@ var pgCounty = [38.837847,-76.848410];
        // Adding our vectors
       var overlays = {
           //"County": county,
-          "Maryland": maryland,
-          "POI": poi,
+          //"Maryland": maryland,
+          //"POI": poi,
           "CWP Projects": cwp
       };
 
