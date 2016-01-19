@@ -53,6 +53,14 @@ var pgCounty = [38.837847,-76.848410];
           }
       });
 
+      // Create our CWP Projects layer and add popups
+      var cwp = new L.geoJson(cwpprojects, {
+          // add options...eventually
+          onEachFeature: function (feature, layer) {
+              layer.bindPopup('<b>' + feature.properties.Phase + ": " + '</b>' + feature.properties.Start_Date);
+          }
+      });
+
        // Create our map object, center it, set initial zoom level, and list all of the layers
       var map = L.map('map', {
           center: pgCounty,
@@ -71,7 +79,8 @@ var pgCounty = [38.837847,-76.848410];
       var overlays = {
           //"County": county,
           "Maryland": maryland,
-          "POI": poi
+          "POI": poi,
+          "CWP Projects": cwp
       };
 
     function highlightFeature(e) {
