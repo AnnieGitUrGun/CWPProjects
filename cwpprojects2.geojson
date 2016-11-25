@@ -30,6 +30,32 @@
     {
       "type": "Feature",
       "properties": {
+        "Name": 78,
+        "ADC": 5286,
+        "PM": "FAKE",
+        "Phase": "Design",
+        "Latitude": 39.010000,
+        "Longitude": -76.916032,
+        "Percent_Cm": 0,
+        "Council_Di": 1,
+        "Start_Date": "2016/24/11",
+        "Major_Proj": "Some Stuff",
+        "Number": 32,
+        "marker-color": "#b803fc",
+        "marker-size": "medium",
+        "marker-symbol": "circle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.98603385088149,
+          39.010000
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "Name": 20,
         "ADC": 5288,
         "PM": "CH2M",

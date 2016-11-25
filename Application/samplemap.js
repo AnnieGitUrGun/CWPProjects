@@ -56,14 +56,7 @@ var pgCounty = [38.837847,-76.848410];
       // Create our CWP Projects layer and add popups
       var cwp = new L.geoJson(cwpprojects, {
           // add options...eventually
-          style: function(feature){
-          	switch (feature.properties.Phase) {
-              case 'Design': return {color: feature.properties.marker-color};
-              case 'Completed': return {color: feature.properties.marker_color};
-              case 'Planning': return {color: feature.properties.marker_color};
-              case 'Construction': return {color: feature.properties.marker_color};
-            } 
-          },
+          style: cwpStyle,
           onEachFeature: function (feature, layer) {
               layer.bindPopup('<b>Phase:</b>' + feature.properties.Phase + '<br/><b>Start Date:</b>' + feature.properties.Start_Date);
           }
@@ -106,6 +99,15 @@ var pgCounty = [38.837847,-76.848410];
       }
 
       info.update(layer.feature.properties);
+    }
+
+    function cwpStyle(feature){
+      switch (feature.properties.Phase) {
+        case 'Design': return {color: feature.properties.marker_color};
+        case 'Completed': return {color: feature.properties.marker_color};
+        case 'Planning': return {color: feature.properties.marker_color};
+        case 'Construction': return {color: feature.properties.marker_color};
+      } 
     }
 
     function style(feature) {
